@@ -4,14 +4,14 @@ package com.ddf.wireless.ddlab;
  * Created by ddf on 18/1/24.
  */
 
-public class City {
-    public Street mStreet;
+public class Province {
+    public City mCity;
 
-    public City(Street street) {
-        mStreet = street;
+    public Province(City city) {
+        mCity = city;
     }
 
-    public String show() {
-        return "成都市" + mStreet.show();
+    public String showAddress() {
+        return "四川省" + mCity.show();
     }
 }

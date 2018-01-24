@@ -5,4 +5,10 @@ package com.ddf.wireless.ddlab;
  */
 
 public class Street {
+    public Street() {
+    }
+
+    public String show() {
+        return "天目山路";
+    }
 }
