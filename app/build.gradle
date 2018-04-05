@@ -16,6 +16,37 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //
+    flavorDimensions("channel", "isPay")
+
+    productFlavors {
+        huawei {
+            dimension 'channel'
+        }
+
+        xiaomi {
+            dimension 'channel'
+        }
+
+        free {
+            dimension 'isPay'
+        }
+
+        paid {
+            dimension 'isPay'
+        }
+
+    }
+
+    applicationVariants.all { variant ->
+
+        variant.outputs.all {
+            println "ddf: ${variant.name} outputs is ${it.outputFile}"
+//            def apkName = 'xxx-xxx-xxx-signed.apk'
+//            outputFileName = apkName
+        }
+    }
 }
 
 dependencies {
