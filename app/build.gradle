@@ -70,3 +70,54 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+
+
+class TimingsListener implements TaskExecutionListener, BuildListener {
+    private long startTime
+    private timings = []
+
+    @Override
+    void beforeExecute(Task task) {
+        startTime = new Date().time
+    }
+
+    @Override
+    void afterExecute(Task task, TaskState taskState) {
+        def ms = new Date().time - startTime
+        timings.add([ms, task.path])
+        println "${task.path} took ${ms}ms"
+
+        println "${task.path} input files---------"
+        task.inputs.files.files.each {
+            println it.getAbsoluteFile()
+        }
+        println "${task.path} output files---------"
+        task.outputs.files.files.each{
+            println it.getAbsoluteFile()
+        }
+    }
+
+    @Override
+    void buildFinished(BuildResult result) {
+        println "Task timings:"
+        for (timing in timings) {
+            if (timing[0] >= 50) {
+                printf "%7sms  %s\n", timing
+            }
+        }
+    }
+
+    @Override
+    void buildStarted(Gradle gradle) {}
+
+    @Override
+    void projectsEvaluated(Gradle gradle) {}
+
+    @Override
+    void projectsLoaded(Gradle gradle) {}
+
+    @Override
+    void settingsEvaluated(Settings settings) {}
+}
+
+gradle.addListener new TimingsListener()
