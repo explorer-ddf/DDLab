@@ -50,8 +50,10 @@ android {
 //    ddf: xiaomiFreeRelease outputs is /Users/didi/ws/DDLab/app/build/outputs/apk/xiaomiFree/release/app-xiaomi-free-release-unsigned.apk
 
     applicationVariants.all { variant ->
+        //    variant = productFlavors+ buildTypes
+        println "${variant.flavorName} + ${variant.buildType.name} = ${variant.name}"
         variant.outputs.all {
-            println "ddf: ${variant.name} outputs is ${it.outputFile}"
+            println "${variant.name} outputs is ${it.outputFile}"
         }
     }
 }
