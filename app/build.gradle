@@ -39,15 +39,26 @@ android {
 
     }
 
-    applicationVariants.all { variant ->
 
+//    ddf: huaweiPaidDebug outputs is /Users/didi/ws/DDLab/app/build/outputs/apk/huaweiPaid/debug/app-huawei-paid-debug.apk
+//    ddf: huaweiPaidRelease outputs is /Users/didi/ws/DDLab/app/build/outputs/apk/huaweiPaid/release/app-huawei-paid-release-unsigned.apk
+//    ddf: huaweiFreeDebug outputs is /Users/didi/ws/DDLab/app/build/outputs/apk/huaweiFree/debug/app-huawei-free-debug.apk
+//    ddf: huaweiFreeRelease outputs is /Users/didi/ws/DDLab/app/build/outputs/apk/huaweiFree/release/app-huawei-free-release-unsigned.apk
+//    ddf: xiaomiPaidDebug outputs is /Users/didi/ws/DDLab/app/build/outputs/apk/xiaomiPaid/debug/app-xiaomi-paid-debug.apk
+//    ddf: xiaomiPaidRelease outputs is /Users/didi/ws/DDLab/app/build/outputs/apk/xiaomiPaid/release/app-xiaomi-paid-release-unsigned.apk
+//    ddf: xiaomiFreeDebug outputs is /Users/didi/ws/DDLab/app/build/outputs/apk/xiaomiFree/debug/app-xiaomi-free-debug.apk
+//    ddf: xiaomiFreeRelease outputs is /Users/didi/ws/DDLab/app/build/outputs/apk/xiaomiFree/release/app-xiaomi-free-release-unsigned.apk
+
+    applicationVariants.all { variant ->
         variant.outputs.all {
             println "ddf: ${variant.name} outputs is ${it.outputFile}"
-//            def apkName = 'xxx-xxx-xxx-signed.apk'
-//            outputFileName = apkName
         }
     }
 }
+
+//直接使用gradle.properties中的内容
+println(username)
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
