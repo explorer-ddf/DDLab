@@ -1,5 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+/**
+ * buildscript方法的作用是配置脚本的依赖，而我们平常用的compile是配置project的依赖。
+ */
 buildscript {
     
     repositories {
